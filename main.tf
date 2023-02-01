@@ -38,7 +38,7 @@ resource "azurerm_virtual_network" "vnet" {
 
 module "subnet" {
   for_each = var.subnets
-  source   = "git::https://gitlab.com/OmerBrumer/subnet.git"
+  source   = "git::https://github.com/OmerBrumer/module-subnet.git"
 
   virtual_network_name      = azurerm_virtual_network.vnet.name
   resource_group_name       = var.resource_group_name
@@ -54,7 +54,7 @@ module "subnet" {
 }
 
 module "diagnostic_settings" {
-  source = "git::https://gitlab.com/OmerBrumer/diagnostic_setting.git"
+  source = "git::https://github.com/OmerBrumer/module-diagnostic-setting.git"
 
   diagonstic_setting_name    = "${azurerm_virtual_network.vnet.name}-diagnostic-setting"
   log_analytics_workspace_id = var.log_analytics_workspace_id
